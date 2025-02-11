@@ -36,7 +36,7 @@ El sistema está compuesto por varios microservicios independientes que permiten
 ## 🔧 Tecnologías Utilizadas  
 
 - **Django:** Framework robusto para el desarrollo backend.  
-- **MySQL/MongoDB:** Base de datos relacional para almacenar datos de usuarios, transacciones y reportes.  
+- **MySQL/MongoDB:** Base de datos relacional Y no relacional para almacenar datos de usuarios, transacciones y reportes.  
 - **Docker:** Contenerización de cada microservicio para facilitar el despliegue.  
 - **JWT (JSON Web Tokens):** Autenticación y autorización de usuarios.  
 - **Kong:** API Gateway para la administración centralizada de solicitudes.  
