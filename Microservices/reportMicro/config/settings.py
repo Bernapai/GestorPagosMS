@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Configuración de RabbitMQ
+RABBITMQ_HOST = 'localhost'  # Cambia esto si RabbitMQ está en otro servidor
+RABBITMQ_QUEUE = 'cola_name'  # Nombre de la cola que utilizarás
+RABBITMQ_USER = 'user'  # Usuario de RabbitMQ, si es necesario
+RABBITMQ_PASSWORD = 'contra'  # Contraseña de RabbitMQ, si es necesario
+
+
 
 # Application definition
 
