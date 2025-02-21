@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,18 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9h_)dktt99792pic8%86h5vanqxf*r=$vm2kte%-qdr*k-h=8l'
+SECRET_KEY = 'rwqejv!_pxa)y+jrjj6=ida%qi^jy%o!d2n-af@aihh6#v38)1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-# Configuración de RabbitMQ
-RABBITMQ_HOST = 'localhost'  # Cambia esto si RabbitMQ está en otro servidor
-RABBITMQ_QUEUE = 'moneyMQ'  # Nombre de la cola que utilizarás
-RABBITMQ_USER = 'bernapai'  # Usuario de RabbitMQ, si es necesario
-RABBITMQ_PASSWORD = 'Juanber123()'  # Contraseña de RabbitMQ, si es necesario
 
 
 # Application definition
@@ -43,12 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'transtactions',
+    'users',
     'rest_framework',
 ]
 
 MIDDLEWARE = [
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -84,12 +78,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'Transactions',
-        'ENFORCE_SCHEMA': True,  # Si quieres que Djongo se encargue de las validaciones de esquema
-        'CLIENT': {
-            'host': 'mongodb://localhost:27017',  # Si tu MongoDB está corriendo localmente
-        }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'usersgestorpagos',          # Nombre de la base de datos
+        'USER': 'root',                  # Usuario de MySQL
+        'PASSWORD': 'tu_contraseña',     # Contraseña de MySQL
+        'HOST': 'localhost',             # Host de la base de datos
+        'PORT': '3306',                  # Puerto de MySQL
+        'OPTIONS': {
+            'charset': 'utf8mb4',        # Opcional: para soportar caracteres especiales
+        },
     }
 }
 
