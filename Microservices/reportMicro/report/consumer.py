@@ -1,6 +1,6 @@
 import json
 import pika
-from reportMicro.config import settings
+from config import settings
 from .models import Report
 
 def callback(ch, method, properties, body):

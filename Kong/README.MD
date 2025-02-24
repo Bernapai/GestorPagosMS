@@ -7,10 +7,6 @@ Este componente actúa como punto de entrada principal para el sistema de gestor
 - Manejo de autenticación y autorización con JWT.
 - Protección de rutas según los permisos de usuario.
 
-## Endpoints Principales
-- `/auth/login`: Autenticación de usuario.
-- `/auth/register`: Registro de nuevos usuarios.
-- `/auth/refresh`: Renovación de tokens JWT.
 
 ## Tecnologías Utilizadas
 - **Kong**

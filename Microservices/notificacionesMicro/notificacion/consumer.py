@@ -1,6 +1,6 @@
 import json
 import pika
-from notificacionesMicro.config import settings
+from config import settings
 from .models import Notificacion
 
 def callback(ch, method, properties, body):

@@ -1,8 +1,8 @@
 from rest_framework import routers
-from .api import TransactionViewSet
+from .api import UserViewSet
 
-transactionRouter = routers.DefaultRouter()
+usersRouter = routers.DefaultRouter()
 
-transactionRouter.register('api/transaction', TransactionViewSet, 'transaction')
+usersRouter.register('api/users', UserViewSet, 'users')
 
-urlpatterns = transactionRouter.urls
+urlpatterns = usersRouter.urls

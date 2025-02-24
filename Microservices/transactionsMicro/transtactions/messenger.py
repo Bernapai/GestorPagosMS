@@ -1,6 +1,6 @@
 import json
 import pika
-from transactionsMicro.config import settings
+from config import settings
 from .models import Transaction
 
 def send_message_to_queue(queue_name, message):
