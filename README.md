@@ -16,28 +16,27 @@ El sistema está compuesto por varios microservicios independientes que permiten
 ## 🖥️ Microservicios  
 
 ### **Servicio de Gestión de Usuarios (Users) 👥**  
-- **Endpoint:** `/users`  
+- **Endpoint:** `api/users`  
 - **Funcionalidad:** Registro, autenticación y administración de usuarios.  
 
 ### **Servicio de Transacciones (Transactions) 💸**  
-- **Endpoint:** `/transactions`  
+- **Endpoint:** `api/transactions`  
 - **Funcionalidad:** Registro, consulta y validación de transacciones financieras.  
 
 ### **Servicio de Reportes (Reports) 📊**  
-- **Endpoint:** `/reports`  
+- **Endpoint:** `api/reports`  
 - **Funcionalidad:** Generación de reportes detallados sobre pagos y transacciones.  
 
 ### **Servicio de Notificaciones (Notifications) 📩**  
-- **Endpoint:** `/notifications`  
+- **Endpoint:** `api/notifications`  
 - **Funcionalidad:** Envío de alertas y notificaciones relacionadas con pagos.  
 
 ---
 
 ## 🔧 Tecnologías Utilizadas  
-
+- **Python:** Idioma utilizado.
 - **Django:** Framework robusto para el desarrollo backend.  
 - **MySQL/MongoDB:** Base de datos relacional Y no relacional para almacenar datos de usuarios, transacciones y reportes.  
-- **Docker:** Contenerización de cada microservicio para facilitar el despliegue.  
-- **JWT (JSON Web Tokens):** Autenticación y autorización de usuarios.  
+- **Docker:** Contenerización de cada microservicio para facilitar el despliegue.   
 - **Kong:** API Gateway para la administración centralizada de solicitudes.  
 - **RabbitMQ:** Comunicación eficiente entre los microservicios.  

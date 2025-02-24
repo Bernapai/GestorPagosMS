@@ -12,11 +12,11 @@ Este microservicio maneja el **envío de alertas y notificaciones** relacionadas
 
 | Método | Endpoint            | Descripción |
 |--------|---------------------|-------------|
-| GET    | `/notifications/`   | Obtener todas las notificaciones |
-| POST   | `/notifications/`   | Crear una nueva notificación |
-| GET    | `/notifications/<id>/` | Obtener una notificación específica |
-| PUT    | `/notifications/<id>/` | Actualizar una notificación |
-| DELETE | `/notifications/<id>/` | Eliminar una notificación |
+| GET    | `api/notification/`   | Obtener todas las notificaciones |
+| POST   | `api/notification/`   | Crear una nueva notificación |
+| GET    | `api/notification/<id>/` | Obtener una notificación específica |
+| PUT    | `api/notification/<id>/` | Actualizar una notificación |
+| DELETE | `api/notification/<id>/` | Eliminar una notificación |
 
 
 

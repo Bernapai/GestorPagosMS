@@ -12,12 +12,12 @@ Este microservicio maneja la **generación de reportes** relacionados con transa
 
 | Método | Endpoint         | Descripción |
 |--------|-----------------|-------------|
-| GET    | `/reports/`     | Obtener todos los reportes generados |
-| POST   | `/reports/`     | Solicitar la generación de un nuevo reporte (se envía a RabbitMQ) |
-| GET    | `/reports/<id>/` | Obtener un reporte específico |
-| DELETE | `/reports/<id>/` | Eliminar un reporte |
+| GET    | `api/report/`     | Obtener todos los reportes generados |
+| POST   | `api/report/`     | Solicitar la generación de un nuevo reporte (se envía a RabbitMQ) |
+| GET    | `api/report/<id>/` | Obtener un reporte específico |
+| DELETE | `api/report/<id>/` | Eliminar un reporte |
 
 ## 🔄 Flujo de Generación de Reportes con RabbitMQ  
 1. Se realiza un **POST** a `/transaccionesMicro/` con los parámetros necesarios .
-2.RabbitMQ redirige el mensaje a /reports y crea un post con sus parametros del report.  
+2.RabbitMQ redirige el mensaje a api/report y crea un post con sus parametros del report.  
 

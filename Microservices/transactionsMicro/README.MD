@@ -12,13 +12,13 @@ Este microservicio maneja la gestión de transacciones en una arquitectura basad
 
 | Método | Endpoint               | Descripción |
 |--------|------------------------|-------------|
-| GET    | `/transacciones/`      | Obtener todas las transacciones |
-| POST   | `/transacciones/`      | Crear una nueva transacción (envía mensaje a RabbitMQ) |
-| GET    | `/transacciones/<id>/` | Obtener una transacción específica |
-| DELETE | `/transacciones/<id>/` | Eliminar una transacción |
+| GET    | `api/transaction/`      | Obtener todas las transaction |
+| POST   | `api/transaction/`      | Crear una nueva transacción (envía mensaje a RabbitMQ) |
+| GET    | `api/transaction/<id>/` | Obtener una transacción específica |
+| DELETE | `api/transaction/<id>/` | Eliminar una transacción |
 
 ## 🔄 Flujo de Procesamiento de Transacciones con RabbitMQ
-Se realiza un POST a /transacciones/ con los datos de la transacción.
+Se realiza un POST a api/transaction/ con los datos de la transacción.
 La solicitud se almacena en MongoDB y se envía un mensaje a RabbitMQ a través de Pika.
 Un consumidor escucha la cola de RabbitMQ y procesa la transacción de forma asincrónica.
 Una vez procesada, la información se actualiza en la base de datos
