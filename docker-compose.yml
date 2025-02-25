@@ -1,0 +1,137 @@
+version: '3.8'
+
+services:
+  kong:
+    container_name: kong
+    image: kong:3.0
+    restart: always
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: "/kong/kong.yml"
+      KONG_PROXY_ACCESS_LOG: "/dev/stdout"
+      KONG_ADMIN_ACCESS_LOG: "/dev/stdout"
+      KONG_PROXY_ERROR_LOG: "/dev/stderr"
+      KONG_ADMIN_ERROR_LOG: "/dev/stderr"
+      KONG_ADMIN_LISTEN: "0.0.0.0:8006"
+    volumes:
+      - ./kong/kong.yml:/kong/kong.yml
+    ports:
+      - "8000:8000" # Puerto para peticiones de cliente
+      - "8006:8006" # Puerto de administración de Kong
+    depends_on:
+      - notificaciones_service
+      - report_service
+      - transactions_service
+      - users_service
+      - rabbitmq
+
+  notificaciones_service:
+    container_name: notificaciones_service
+    build:
+      context: ./Microservices/notificacionesMicro
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - MONGO_URI=mongodb://mongo_notificaciones:27017/Notificaciones
+      - RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - mongo_notificaciones
+
+  mongo_notificaciones:
+    container_name: mongo_notificaciones
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_notificaciones_data:/data/db
+
+  report_service:
+    container_name: report_service
+    build:
+      context: ./Microservices/reportMicro
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    environment:
+      - MONGO_URI=mongodb://mongo_reportes:27017/Reports
+      - RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - mongo_reportes
+
+  mongo_reportes:
+    container_name: mongo_reportes
+    image: mongo:5.0
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_reportes_data:/data/db
+
+  transactions_service:
+    container_name: transactions_service
+    build:
+      context: ./Microservices/transactionsMicro
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    environment:
+      - MONGO_URI=mongodb://mongo_transactions:27017/Transactions
+      - RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - mongo_transactions
+
+  mongo_transactions:
+    container_name: mongo_transactions
+    image: mongo:5.0
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongo_transactions_data:/data/db
+
+  users_service:
+    container_name: users_service
+    build:
+      context: ./Microservices/usersMicro
+      dockerfile: Dockerfile
+    ports:
+      - "8004:8004"
+    environment:
+      - MYSQL_HOST=mysql_users
+      - MYSQL_DATABASE=usersgestorpagos
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Juanber123()
+    depends_on:
+      - mysql_users
+
+  mysql_users:
+    container_name: mysql_users
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Juanber123()
+      MYSQL_DATABASE: usersgestorpagos
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Juanber123()
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_users_data:/var/lib/mysql
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:management
+    ports:
+      - "5672:5672" # Puerto para conexiones AMQP
+      - "15672:15672" # Puerto para la interfaz web de administración
+    environment:
+      RABBITMQ_DEFAULT_USER: bernapai # Usa tu usuario existente aquí
+      RABBITMQ_DEFAULT_PASS: Juanber123() # Usa la contraseña correspondiente a tu usuario
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+volumes:
+  mongo_notificaciones_data:
+  mongo_reportes_data:
+  mongo_transactions_data:
+  mysql_users_data:
+  rabbitmq_data:

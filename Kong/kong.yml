@@ -1,0 +1,36 @@
+_format_version: "3.0"
+services:
+  - name: notificaciones_service
+    url: http://notificaciones_service:8001
+    routes:
+      - name: notificaciones_route
+        paths:
+          - /notificaciones
+  - name: report_service
+    url: http://report_service:8002
+    routes:
+      - name: report_route
+        paths:
+          - /reports
+  - name: transactions_service
+    url: http://transactions_service:8003
+    routes:
+      - name: transactions_route
+        paths:
+          - /transactions
+  - name: users_service
+    url: http://users_service:8004
+    routes:
+      - name: users_route
+        paths:
+          - /users
+
+plugins:
+  - name: key-auth
+    service: notificaciones_service
+  - name: key-auth
+    service: report_service
+  - name: key-auth
+    service: transactions_service
+  - name: key-auth
+    service: users_service
